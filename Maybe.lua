@@ -81,3 +81,16 @@ local function mapMaybe(f)
         end
     end
 end
+
+return {
+    maybeMap = maybeMap,
+    maybeBind = maybeBind,
+    maybe = maybe,
+    isJust = isJust,
+    isNothing = isNothing,
+    fromMaybe = fromMaybe,
+    arrayToMaybe = arrayToMaybe,
+    catMaybes = catMaybes
+    mapMaybe = mapMaybe
+}
+    maybeToArray = maybeToArray,
