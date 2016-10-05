@@ -105,6 +105,34 @@ local function mapMaybe(f)
     end
 end
 
+-- maybeElem : Eq a => a -> Maybe a -> Bool
+local function maybeElem(x)
+    return function(y)
+        if y ~= nil
+        then return x == y
+        else return false
+        end
+    end
+end
+
+-- maybeTraverse : (a -> {b}) -> Maybe a -> {Maybe b}
+local function maybeTraverse(f)
+    return function(x)
+        if x ~= nil
+        then return f(x)
+        else return {nil}
+        end
+    end
+end
+
+-- maybeSequence : Maybe {a} -> {Maybe a}
+local function(x)
+    if x ~= nil
+    then return x
+    else return {nil}
+    end
+end
+
 return {
     maybeMap = maybeMap,
     maybeBind = maybeBind,
@@ -116,5 +144,8 @@ return {
     arrayToMaybe = arrayToMaybe,
     maybeToArray = maybeToArray,
     catMaybes = catMaybes,
-    mapMaybe = mapMaybe
+    mapMaybe = mapMaybe,
+    maybeElem = maybeElem,
+    maybeTraverse = maybeTraverse,
+    maybeSequence = maybeSequence
 }
