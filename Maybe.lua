@@ -8,7 +8,7 @@ local function maybeMap(f)
     end
 end
 
--- maybeBind : Maybe a -> (a -> b) -> Maybe b
+-- maybeBind : Maybe a -> (a -> Maybe b) -> Maybe b
 local function maybeBind(x)
     return function(f)
         if x ~= nil
