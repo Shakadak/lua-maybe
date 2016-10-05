@@ -18,6 +18,19 @@ local function maybeBind(x)
     end
 end
 
+-- maybeApply : Maybe (a -> b) -> Maybe a -> Maybe b
+local function maybeApply(f)
+    return function(x)
+        if f ~= nil
+        then if x ~= nil
+             then return f(x)
+             else return nil
+             end
+        else return nil
+        end
+    end
+end
+
 -- maybe : b -> (a -> b) -> Maybe a -> b
 local function maybe(default)
     return function(f)
@@ -95,12 +108,13 @@ end
 return {
     maybeMap = maybeMap,
     maybeBind = maybeBind,
+    maybeApply = maybeApply,
     maybe = maybe,
     isJust = isJust,
     isNothing = isNothing,
     fromMaybe = fromMaybe,
     arrayToMaybe = arrayToMaybe,
-    catMaybes = catMaybes
+    maybeToArray = maybeToArray,
+    catMaybes = catMaybes,
     mapMaybe = mapMaybe
 }
-    maybeToArray = maybeToArray,
