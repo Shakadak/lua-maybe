@@ -1,3 +1,4 @@
+-- maybeMap : (a -> b) -> Maybe a -> Maybe b
 local function maybeMap(f)
     return function(x)
         if x ~= nil
@@ -7,6 +8,7 @@ local function maybeMap(f)
     end
 end
 
+-- maybeBind : Maybe a -> (a -> b) -> Maybe b
 local function maybeBind(x)
     return function(f)
         if x ~= nil
@@ -16,6 +18,7 @@ local function maybeBind(x)
     end
 end
 
+-- maybe : b -> (a -> b) -> Maybe a -> b
 local function maybe(default)
     return function(f)
         return function(x)
@@ -27,14 +30,17 @@ local function maybe(default)
     end
 end
 
+-- isJust : Maybe a -> Bool
 local function isJust(x)
     return x ~= nil
 end
 
+-- isNothing : Maybe a -> Bool
 local function isNothing(x)
     return x == nil
 end
 
+-- fromMaybe : a -> Maybe a -> a
 local function fromMaybe(default)
     return function(x)
         if x ~= nil
@@ -44,6 +50,7 @@ local function fromMaybe(default)
     end
 end
 
+-- arrayToMaybe : {a} -> Maybe a
 local function arrayToMaybe(xs)
     if #xs
     then return xs[1]
@@ -51,6 +58,7 @@ local function arrayToMaybe(xs)
     end
 end
 
+-- maybeToArray : Maybe a -> {a}
 local function maybeToArray(x)
     if x ~= nil
     then return {x}
@@ -58,6 +66,7 @@ local function maybeToArray(x)
     end
 end
 
+-- catMaybes : {Maybe a} -> {a}
 local function catMaybes(xs)
     local ret = {}
     for _, x in ipairs(xs) do
@@ -69,6 +78,7 @@ local function catMaybes(xs)
     return ret
 end
 
+-- mapMaybe : (a -> Maybe b) -> {a} -> {b}
 local function mapMaybe(f)
     return function(xs)
         local ret = {}
