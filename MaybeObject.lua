@@ -1,31 +1,5 @@
 local Maybe = {}
 
-local function new(x)
-    return {
-        x = x,
-        map = map,
-        bind = bind,
-        apply = apply,
-        maybe = maybe,
-        isJust = isJust,
-        isNothing = isNothing,
-        fromMaybe = fromMaybe,
-        fromJust = fromJust,
-        arrayToMaybe = arrayToMaybe,
-        maybeToArray = maybeToArray,
-        catMaybes = catMaybes,
-        mapMaybe = mapMaybe,
-        elem = elem,
-        show = show
-    }
-end
-
-Maybe.Nothing = function()
-    return new(nil)
-end
-
-Maybe.Just = new
-
 local function show(self)
     if type(self.x) == "nil"
         then return "Nothing"
@@ -151,6 +125,34 @@ local function elem(self, y)
     then return self.x == y
     else return false
     end
+end
+
+local function new(x)
+    return {
+        x = x,
+        map = map,
+        bind = bind,
+        apply = apply,
+        maybe = maybe,
+        isJust = isJust,
+        isNothing = isNothing,
+        fromMaybe = fromMaybe,
+        fromJust = fromJust,
+        arrayToMaybe = arrayToMaybe,
+        maybeToArray = maybeToArray,
+        catMaybes = catMaybes,
+        mapMaybe = mapMaybe,
+        elem = elem,
+        show = show
+    }
+end
+
+Maybe.Nothing = function()
+    return new(nil)
+end
+
+Maybe.Just = function(x)
+	return new(x)
 end
 
 return Maybe
