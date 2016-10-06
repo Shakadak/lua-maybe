@@ -126,7 +126,7 @@ local function maybeTraverse(f)
 end
 
 -- maybeSequence : Maybe {a} -> {Maybe a}
-local function(x)
+local function maybeSequence(x)
     if x ~= nil
     then return x
     else return {nil}
