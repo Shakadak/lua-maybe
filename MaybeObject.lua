@@ -28,9 +28,9 @@ end
 
 -- dot : Semigroup a => Maybe a -> Maybe a -> Maybe a
 local function dot(self, y)
-    if self:isJust and y:isJust
+    if self:isJust() and y:isJust()
     then return Maybe.Just(x:dot(y))
-    elseif self:isJust
+    elseif self:isJust()
     then return self
     else return y
     end
@@ -52,10 +52,10 @@ local function bind(self, f)
     end
 end
 
-    -- apply : Maybe (a -> b) -> Maybe a -> Maybe b
-local function apply(self, f)
-    if self.x ~= nil and f.x ~= nil
-    then return Maybe.Just(f.x(self.x))
+-- apply : Maybe (a -> b) -> Maybe a -> Maybe b
+local function apply(self, x)
+    if self.x ~= nil and x.x ~= nil
+    then return Maybe.Just(self.x(x.x))
     else return Maybe.Nothing()
     end
 end
