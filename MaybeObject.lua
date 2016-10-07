@@ -21,6 +21,16 @@ local function show(self)
     end
 end
 
+-- dot : Semigroup a => Maybe a -> Maybe a -> Maybe a
+local function dot(self, y)
+    if self:isJust and y:isJust
+    then return Maybe.Just(x:dot(y))
+    elseif self:isJust
+    then return self
+    else return y
+    end
+end
+
 -- map : Maybe a -> (a -> b) -> Maybe b
 local function map(self, f)
     if self.x ~= nil
