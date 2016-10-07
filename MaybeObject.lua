@@ -14,10 +14,15 @@ local function show(self)
     elseif type(self.x) == "thread"
         then return "Just thread"
     elseif type(self.x) == "table"
-        then return "Just ("..self.x:show()..")"
-    elseif self.x
-        then return "Just True"
-    else return "Just False"
+        then if self.x.show ~= nil
+            then return "Just ("..self.x:show()..")"
+            else return "Just Table"
+            end
+    elseif type(self.x) == "boolean"
+        then if self.x
+            then return "Just True"
+            else return "Just False"
+            end
     end
 end
 
