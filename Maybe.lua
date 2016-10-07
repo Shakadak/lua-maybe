@@ -134,9 +134,9 @@ local function maybeSequence(x)
 end
 
 return {
-    maybeMap = maybeMap,
-    maybeBind = maybeBind,
-    maybeApply = maybeApply,
+    map = maybeMap,
+    bind = maybeBind,
+    apply = maybeApply,
     maybe = maybe,
     isJust = isJust,
     isNothing = isNothing,
@@ -146,6 +146,6 @@ return {
     catMaybes = catMaybes,
     mapMaybe = mapMaybe,
     maybeElem = maybeElem,
-    maybeTraverse = maybeTraverse,
-    maybeSequence = maybeSequence
+    traverse = maybeTraverse,
+    sequence = maybeSequence
 }
