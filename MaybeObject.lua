@@ -170,4 +170,10 @@ Maybe.Just = function(x)
 	return new(x)
 end
 
+Maybe.Pure = function(x)
+	return new(x)
+end
+
+Maybe.Id = new(nil)
+
 return Maybe
