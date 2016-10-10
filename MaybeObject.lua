@@ -14,7 +14,7 @@ local function show(self)
     elseif type(self.x) == "thread"
         then return "Just thread"
     elseif type(self.x) == "table"
-        then if self.x.show ~= nil
+        then if type(self.x.show) == "function"
             then return "Just ("..self.x:show()..")"
             else return "Just Table"
             end
